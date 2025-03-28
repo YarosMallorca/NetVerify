@@ -1,0 +1,27 @@
+name: netverify
+description: "A simple network verification tool"
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_colorpicker: ^1.1.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  intl: any
+  locale_names: ^1.1.1
+  shared_preferences: ^2.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true

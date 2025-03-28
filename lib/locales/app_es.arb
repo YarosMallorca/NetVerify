@@ -1,0 +1,48 @@
+{
+    "@@author": "YarosMallorca",
+    "@@locale": "es",
+    "addNetwork": "Agregar red",
+    "allFieldsRequired": "Todos los campos deben ser completados",
+    "allFunctional": "Todas las redes están funcionando correctamente sin solapamientos.",
+    "appDescription": "Herramienta simple de verificación de redes",
+    "cancel": "Cancelar",
+    "changeColor": "Cambiar color",
+    "darkTheme": "Tema oscuro",
+    "deleteNetwork": "Eliminar red",
+    "done": "Hecho",
+    "invalidEndIP": "Dirección IP final inválida",
+    "invalidStartIP": "Dirección IP inicial inválida",
+    "invalidSubnetMask": "Máscara de subred inválida",
+    "ipEndHint": "IP final",
+    "ipStartHint": "IP inicial",
+    "lightTheme": "Tema claro",
+    "networkName": "Nombre de la red",
+    "networkSummary": "Resumen de las redes",
+    "notInRange": "El rango de IP no encaja dentro de la subred",
+    "overlapDetails": "{firstNetworkName} se solapa con {secondNetworkName}",
+    "@overlapDetails": {
+        "placeholders": {
+            "firstNetworkName": {
+                "type": "String"
+            },
+            "secondNetworkName": {
+                "type": "String"
+            }
+        }
+    },
+    "overlapsDetected": "Se detectaron solapamietnos en las siguientes redes:",
+    "overlapsWith": "Se solapa con {networkName}",
+    "@overlapsWith": {
+        "placeholders": {
+            "networkName": {
+                "type": "String"
+            }
+        }
+    },
+    "pickAColor": "Elige un color",
+    "selectLanguage": "Seleccionar idioma",
+    "selectTheme": "Seleccionar tema",
+    "someNetworkErrors": "Algunas redes tienen errores.",
+    "subnetMaskHint": "Máscara de subred (notación CIDR)",
+    "systemDefault": "Predeterminado"
+}

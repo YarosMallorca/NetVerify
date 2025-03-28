@@ -1,0 +1,48 @@
+{
+    "@@author": "YarosMallorca",
+    "@@locale": "en",
+    "addNetwork": "Add network",
+    "allFieldsRequired": "All fields must be filled",
+    "allFunctional": "All networks are functioning correctly with no overlaps.",
+    "appDescription": "A simple network verification tool",
+    "cancel": "Cancel",
+    "changeColor": "Change color",
+    "darkTheme": "Dark theme",
+    "deleteNetwork": "Delete network",
+    "done": "Done",
+    "invalidEndIP": "Invalid IP end address",
+    "invalidStartIP": "Invalid IP start address",
+    "invalidSubnetMask": "Invalid Subnet Mask",
+    "ipEndHint": "IP end",
+    "ipStartHint": "IP start",
+    "lightTheme": "Light theme",
+    "networkName": "Network name",
+    "networkSummary": "Network Summary",
+    "notInRange": "IP range does not fit within the subnet",
+    "overlapDetails": "{firstNetworkName} overlaps with {secondNetworkName}",
+    "@overlapDetails": {
+        "placeholders": {
+            "firstNetworkName": {
+                "type": "String"
+            },
+            "secondNetworkName": {
+                "type": "String"
+            }
+        }
+    },
+    "overlapsDetected": "Overlaps detected in the following networks:",
+    "overlapsWith": "Overlaps with {networkName}",
+    "@overlapsWith": {
+        "placeholders": {
+            "networkName": {
+                "type": "String"
+            }
+        }
+    },
+    "pickAColor": "Pick a color",
+    "selectLanguage": "Select Language",
+    "selectTheme": "Select Theme",
+    "someNetworkErrors": "Some networks have errors.",
+    "subnetMaskHint": "Subnet Mask (CIDR notation)",
+    "systemDefault": "System Default"
+}

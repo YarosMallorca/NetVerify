@@ -1,0 +1,48 @@
+{
+    "@@author": "YarosMallorca",
+    "@@locale": "ca",
+    "addNetwork": "Afegir xarxa",
+    "allFieldsRequired": "Tots els camps han de ser completats",
+    "allFunctional": "Totes les xarxes funcionen correctament sense solapaments.",
+    "appDescription": "Eina simple de verificació de xarxes",
+    "cancel": "Cancel·lar",
+    "changeColor": "Canviar color",
+    "darkTheme": "Tema fosc",
+    "deleteNetwork": "Eliminar xarxa",
+    "done": "Fet",
+    "invalidEndIP": "Adreça IP final no vàlida",
+    "invalidStartIP": "Adreça IP inicial no vàlida",
+    "invalidSubnetMask": "Màscara de subxarxa no vàlida",
+    "ipEndHint": "IP final",
+    "ipStartHint": "IP inicial",
+    "lightTheme": "Tema clar",
+    "networkName": "Nom de la xarxa",
+    "networkSummary": "Resum de les xarxes",
+    "notInRange": "El rang d'IP no encaixa dins de la subxarxa",
+    "overlapDetails": "{firstNetworkName} es solapa amb {secondNetworkName}",
+    "@overlapDetails": {
+        "placeholders": {
+            "firstNetworkName": {
+                "type": "String"
+            },
+            "secondNetworkName": {
+                "type": "String"
+            }
+        }
+    },
+    "overlapsDetected": "S'han detectat solapaments a les següents xarxes:",
+    "overlapsWith": "Es solapa amb {networkName}",
+    "@overlapsWith": {
+        "placeholders": {
+            "networkName": {
+                "type": "String"
+            }
+        }
+    },
+    "pickAColor": "Tria un color",
+    "selectLanguage": "Seleccionar idioma",
+    "selectTheme": "Seleccionar tema",
+    "someNetworkErrors": "Algunes xarxes tenen errors.",
+    "subnetMaskHint": "Màscara de subxarxa (notació CIDR)",
+    "systemDefault": "Predeterminat"
+}
