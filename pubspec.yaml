@@ -1,7 +1,7 @@
 name: netverify
 description: "A simple network verification tool"
 publish_to: "none"
-version: 0.1.0
+version: 0.2.0
 
 environment:
   sdk: ^3.7.2
@@ -15,6 +15,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   intl: any
   locale_names: ^1.1.1
+  package_info_plus: ^8.3.0
   shared_preferences: ^2.5.3
 
 dev_dependencies:

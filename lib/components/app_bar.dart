@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netverify/components/dialogs/locale_dialog.dart';
 import 'package:netverify/components/dialogs/theme_dialog.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class NAppBar extends StatelessWidget implements PreferredSizeWidget {
   const NAppBar({super.key});
@@ -14,19 +15,27 @@ class NAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 5,
       centerTitle: true,
       toolbarHeight: _height,
-      title: Column(
-        spacing: 4,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'NetVerify',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            AppLocalizations.of(context)!.appDescription,
-            style: TextStyle(fontSize: 16),
-          ),
-        ],
+      title: FutureBuilder<PackageInfo>(
+        future: PackageInfo.fromPlatform(),
+        builder: (context, snapshot) {
+          return Tooltip(
+            message: snapshot.hasData ? 'V${snapshot.data!.version}' : "",
+            child: Column(
+              spacing: 4,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'NetVerify',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  AppLocalizations.of(context)!.appDescription,
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+          );
+        },
       ),
       actions: [
         IconButton(
