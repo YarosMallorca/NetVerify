@@ -105,36 +105,47 @@ class _NetworkTileState extends ConsumerState<NetworkTile> {
     });
   }
 
-  // Add this method to check for overlaps with other networks
   List<String> _checkForOverlaps(
     Network currentNetwork,
     List<Network> allNetworks,
   ) {
     final overlaps = <String>[];
-    final currentIpStart = currentNetwork.ipStart;
-    final currentIpEnd = currentNetwork.ipEnd;
 
-    if (currentIpStart == null ||
-        currentIpEnd == null ||
+    if (currentNetwork.ipStart == null ||
+        currentNetwork.ipEnd == null ||
+        currentNetwork.subnetMask == null ||
         !currentNetwork.isValid!) {
       return overlaps;
     }
 
-    final currentStart = ipToInt(currentIpStart);
-    final currentEnd = ipToInt(currentIpEnd);
+    // Calculate the network address and broadcast address for current network
+    int currentStartIP = ipToInt(currentNetwork.ipStart!);
+    int currentSubnetMask = currentNetwork.subnetMask!;
+    int currentNetworkAddress =
+        currentStartIP & ((0xFFFFFFFF) << (32 - currentSubnetMask));
+    int currentBroadcast =
+        currentNetworkAddress | ((1 << (32 - currentSubnetMask)) - 1);
 
     for (final otherNetwork in allNetworks) {
       if (otherNetwork.id == currentNetwork.id ||
           otherNetwork.ipStart == null ||
           otherNetwork.ipEnd == null ||
+          otherNetwork.subnetMask == null ||
           !otherNetwork.isValid!) {
         continue;
       }
 
-      final otherStart = ipToInt(otherNetwork.ipStart!);
-      final otherEnd = ipToInt(otherNetwork.ipEnd!);
+      // Calculate the network address and broadcast address for the other network
+      int otherStartIP = ipToInt(otherNetwork.ipStart!);
+      int otherSubnetMask = otherNetwork.subnetMask!;
+      int otherNetworkAddress =
+          otherStartIP & ((0xFFFFFFFF) << (32 - otherSubnetMask));
+      int otherBroadcast =
+          otherNetworkAddress | ((1 << (32 - otherSubnetMask)) - 1);
 
-      if ((currentStart <= otherEnd && currentEnd >= otherStart)) {
+      // Check if the networks' address spaces overlap
+      if (currentNetworkAddress <= otherBroadcast &&
+          currentBroadcast >= otherNetworkAddress) {
         overlaps.add(
           AppLocalizations.of(context)!.overlapsWith(otherNetwork.name),
         );

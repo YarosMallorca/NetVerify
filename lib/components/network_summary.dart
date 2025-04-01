@@ -7,11 +7,21 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class NetworkSummary extends ConsumerWidget {
   const NetworkSummary({super.key});
 
-  // Helper function to convert IP address to numerical representation
+  // Convert IP address to integer representation
   int _ipToInt(String ip) {
     return ip
         .split('.')
         .fold(0, (prev, octet) => (prev << 8) + int.parse(octet));
+  }
+
+  // Compute network base address using subnet mask
+  int _networkBase(String ip, int subnetMask) {
+    return _ipToInt(ip) & ((0xFFFFFFFF) << (32 - subnetMask));
+  }
+
+  // Compute broadcast address from network base and subnet mask
+  int _broadcastAddress(int networkBase, int subnetMask) {
+    return networkBase | ((1 << (32 - subnetMask)) - 1);
   }
 
   // Function to check for overlapping networks
@@ -21,11 +31,13 @@ class NetworkSummary extends ConsumerWidget {
   ) {
     final overlaps = <String>[];
 
-    // Filter out networks without valid IP ranges
     final validNetworks =
         networks
             .where(
-              (n) => n.ipStart != null && n.ipEnd != null && n.isValid == true,
+              (n) =>
+                  n.ipStart != null &&
+                  n.subnetMask != null &&
+                  n.isValid == true,
             )
             .toList();
 
@@ -34,24 +46,23 @@ class NetworkSummary extends ConsumerWidget {
         final netA = validNetworks[i];
         final netB = validNetworks[j];
 
-        final aStart = _ipToInt(netA.ipStart!);
-        final aEnd = _ipToInt(netA.ipEnd!);
-        final bStart = _ipToInt(netB.ipStart!);
-        final bEnd = _ipToInt(netB.ipEnd!);
+        final baseA = _networkBase(netA.ipStart!, netA.subnetMask!);
+        final broadcastA = _broadcastAddress(baseA, netA.subnetMask!);
 
-        // Check if ranges overlap
-        if ((aStart <= bEnd && aEnd >= bStart)) {
+        final baseB = _networkBase(netB.ipStart!, netB.subnetMask!);
+        final broadcastB = _broadcastAddress(baseB, netB.subnetMask!);
+
+        // Networks overlap if one network's range intersects with the other's
+        if (baseA <= broadcastB && broadcastA >= baseB) {
           final overlapText = AppLocalizations.of(
             context,
           )!.overlapDetails(netA.name, netB.name);
-
           if (!overlaps.contains(overlapText)) {
             overlaps.add(overlapText);
           }
         }
       }
     }
-
     return overlaps;
   }
 
