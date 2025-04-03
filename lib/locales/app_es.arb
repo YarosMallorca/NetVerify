@@ -30,7 +30,7 @@
             }
         }
     },
-    "overlapsDetected": "Se detectaron solapamietnos en las siguientes redes:",
+    "overlapsDetected": "Se detectaron solapamientos en las siguientes redes:",
     "overlapsWith": "Se solapa con {networkName}",
     "@overlapsWith": {
         "placeholders": {

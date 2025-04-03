@@ -1,7 +1,7 @@
 name: netverify
 description: "A simple network verification tool"
 publish_to: "none"
-version: 0.2.0
+version: 0.2.1
 
 environment:
   sdk: ^3.7.2
